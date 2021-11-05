@@ -1,13 +1,29 @@
 /// <reference types="react-scripts" />
 
-declare type Transaction = {
-  id: number,
-  title: string,
-  amount: number,
-  type: "deposit" | "withdraw",
-  category: string,
-  createdAt: Date
-};
+declare namespace Transaction {
+  export type Type = "deposit" | "withdraw";
+
+  export interface Form {
+    title: string,
+    amount: number,
+    type: Type,
+    category: string,
+  }
+
+  export interface Interface extends Form {
+    id: number,
+    createdAt: Date
+  }
+
+  export interface Response {
+    transactions: Interface[]
+  }
+}
+
+declare interface RadioBoxProps {
+  isActived: boolean;
+  activedColor: "green" | "red";
+}
 
 declare namespace App {
   export type Context = {
@@ -17,4 +33,4 @@ declare namespace App {
   export interface Provider {
     children: JSX.Element;
   };
-}
+};

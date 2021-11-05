@@ -17,8 +17,8 @@ function Summary() {
       </div>
       <div>
         <header>
-          <p>Saidas</p>
-          <img src={outcomeImg} alt="Saidas"/>
+          <p>Saídas</p>
+          <img src={outcomeImg} alt="Saídas"/>
         </header>
         <strong>
           - R$ 500
