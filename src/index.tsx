@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createServer } from 'miragejs';
 import { App } from './App';
+import { AppProvider } from './Context/AppProvider';
 
 createServer({
   routes() {
@@ -24,7 +25,9 @@ createServer({
 
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
+    <AppProvider>
+      <App/>
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

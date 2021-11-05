@@ -8,3 +8,13 @@ declare type Transaction = {
   category: string,
   createdAt: Date
 };
+
+declare namespace App {
+  export type Context = {
+    isNewTransactionModalOpen: boolean;
+    setIsNewTransactionModalOpen: (isOpen: boolean) => void;
+  };
+  export interface Provider {
+    children: JSX.Element;
+  };
+}

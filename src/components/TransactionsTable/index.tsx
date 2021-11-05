@@ -25,7 +25,7 @@ function TransactionsTable() {
           {
             transactions.map((transaction, i) => {
               return (
-                <tr>
+                <tr key={`${i}-transaction`}>
                   <td>{transaction.title}</td>
                   <td className={transaction.type}>
                     {transaction.type === "withdraw" && "- "}R$ {transaction.amount.toFixed(2)}
