@@ -25,8 +25,16 @@ declare interface RadioBoxProps {
   activedColor: "green" | "red";
 }
 
+declare type Sumary = {
+  deposit: number;
+  withdraw: number;
+  total: number;
+};
+
 declare namespace App {
   export type Context = {
+    transactions: Transaction.Interface[],
+    reloadTransactions: () => void;
     isNewTransactionModalOpen: boolean;
     setIsNewTransactionModalOpen: (isOpen: boolean) => void;
   };

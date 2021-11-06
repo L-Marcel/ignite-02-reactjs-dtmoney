@@ -7,21 +7,29 @@ import outcomeImg from "../../assets/outcome.svg";
 import closeImg from "../../assets/close.svg";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { api } from "../../services/api";
+import { useTransactions } from "../../hook/useTransactions";
 
 Modal.setAppElement("#root");
 
+const defaultFormValues: Transaction.Form = {
+  amount: 0,
+  category: "",
+  title: "",
+  type: "deposit"
+};
+
 function NewTransactionModal() {
+  const { reloadTransactions } = useTransactions();
   const { isNewTransactionModalOpen, setIsNewTransactionModalOpen } = useIsNewTransactionModalOpen();
-  const [values, setValues] = useState<Transaction.Form>({
-    amount: 0,
-    category: "",
-    title: "",
-    type: "deposit"
-  });
+  const [values, setValues] = useState<Transaction.Form>(defaultFormValues);
 
   function handleCreateNewTransaction(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    api.post("/transactions", values);
+    api.post("/transactions", values).then(() => {
+      reloadTransactions();
+      setValues(defaultFormValues);
+      setIsNewTransactionModalOpen(false);
+    });
   };
 
   function handleChangeValues(e: ChangeEvent<HTMLInputElement>) {
