@@ -1,4 +1,5 @@
 {
+  "translatedDescription": "Projeto criado durante a trilha do React.js. Se trata de uma aplicação para registrar entrada e saída de dinheiro em um banco de dados. Utiliza hooks, context e formulários.",
   "technologies": [
     "React.js",
     "HTML",
